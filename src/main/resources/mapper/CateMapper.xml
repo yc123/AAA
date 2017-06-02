@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yc.dao.CateMapper">
+    <resultMap id="CateResultMap" type="com.yc.bean.Category">
+        <id column="ID" property="ID" jdbcType="BIGINT"/>
+        <result column="cateName" property="cateName" jdbcType="VARCHAR"/>
+        <collection property="childs" javaType="list" select="getParentById"  column="ID">
+
+        </collection>
+    </resultMap>
+
+
+    <!--<sql id="Cate_Column_List">-->
+    <!--ID,cateName,p_id-->
+    <!--</sql>-->
+
+    <select id="queryCategoryById" parameterType="java.lang.Long" resultMap="CateResultMap">
+        SELECT
+        <!--<include refid="Cate_Column_List"></include>-->
+        c.ID, c.cateName
+        FROM
+        category c
+        WHERE
+        c.ID=#{id}
+    </select>
+
+    <select id="getParentById" parameterType="java.lang.Long" resultMap="CateResultMap">
+        SELECT
+        <!--<include refid="Cate_Column_List"></include>-->
+        c.ID, c.cateName
+        FROM
+        category c
+        WHERE
+        c.p_id=#{ID}
+    </select>
+
+</mapper>

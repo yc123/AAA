@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>learn Resources</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<div style="text-align: center;margin:0 auto;width: 1000px; ">
+       <table width="100%" border="1" cellspacing="1" cellpadding="0">
+           <!--<tr th:each="${category}">-->
+           <tr><td>爸爸：</td></tr>
+           <tr>
+            <td th:text="${category.ID}"></td>
+            <td th:text="${category.cateName}"></td>
+           </tr>
+           <tr><td>儿子：</td></tr>
+           <tr th:each="cates:${category.childs}">
+               <td th:text="${cates.ID}" ></td>
+               <td th:text="${cates.cateName}" ></td>
+           <tr th:each="ca:${cates.childs}">
+                <tr th:if="ca!=null">
+                    <td>孙子</td>
+                </tr>
+               <td th:text="${ca.ID}" ></td>
+               <td th:text="${ca.cateName}" ></td>
+           </tr>
+           </tr>
+
+
+    </table>
+</div>
+</body>
+</html>
