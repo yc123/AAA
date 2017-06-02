@@ -23,7 +23,7 @@ public class TestSmApplicationTests {
 		System.out.println(cateMapper.queryCategoryById(2l));
 
 //		Category category= cateMapper.queryCategoryById(4l);
-//		List<Category> list = category.getChilds();
+//		List<Category> list = category.getChilds();  
 //		for(Category ca:list){
 //			System.out.println(ca);
 //		}
